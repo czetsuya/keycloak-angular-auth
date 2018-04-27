@@ -9,11 +9,15 @@ import { KeycloakService } from 'app/core/auth/keycloak.service';
 @Injectable()
 export class SecuredHttpInterceptor implements HttpInterceptor {
 
+    /**
+     * Intercepts the http request and add the bearer token of the currently logged user.
+     * 
+     * @param request http request
+     * @param next http handler
+     */
     intercept(
         request: HttpRequest<any>,
-        next: HttpHandler
-
-    ): Observable<HttpEvent<any>> {
+        next: HttpHandler ): Observable<HttpEvent<any>> {
         //const started = Date.now();
         KeycloakService.getToken();
         let kcToken = KeycloakService.auth.authz.token;

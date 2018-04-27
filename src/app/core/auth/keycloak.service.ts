@@ -8,9 +8,10 @@ declare var Keycloak: any;
 export class KeycloakService {
 
     static auth: any = {};
-    static redirectUrl: string;
-    static clientRoles: string[];
 
+    /**
+     * Initialized keycloak client
+     */
     static init(): Promise<any> {
         let keycloakAuth: any = new Keycloak( 'assets/keycloak.json' );
         KeycloakService.auth.loggedIn = false;
@@ -30,10 +31,20 @@ export class KeycloakService {
         } );
     }
 
+    /**
+     * Checks if the login user is a member of the specified group
+     * 
+     * @param groupName group name defined in keycloak
+     */
     static hasGroup( groupName: string ): boolean {
         return KeycloakService.auth.authz != null && KeycloakService.auth.authz.authenticated && KeycloakService.auth.authz.idTokenParsed.groups.indexOf( "/" + groupName ) !== -1 ? true : false;
     }
 
+    /**
+     * Checks if the login user is a member of the specified groups
+     * 
+     * @param groupNames a list of group names defined in keycloak
+     */
     static hasGroups( groupNames: string[] ): boolean {
         if ( !groupNames ) {
             return false;
@@ -45,6 +56,9 @@ export class KeycloakService {
         } );
     }
 
+    /**
+     * Logout the current user
+     */
     static logout() {
         console.log( '*** LOGOUT' );
         KeycloakService.auth.loggedIn = false;
@@ -53,6 +67,9 @@ export class KeycloakService {
         window.location.href = KeycloakService.auth.logoutUrl;
     }
 
+    /**
+     * Redirects to keycloak login page
+     */
     static login() {
         KeycloakService.auth.authz.login().success( function() {
             KeycloakService.auth.authz.initPromise.setSuccess();
@@ -61,6 +78,9 @@ export class KeycloakService {
         } );
     }
 
+    /**
+     * Returns the token of the currently logged user
+     */
     static getToken(): Promise<string> {
         return new Promise<string>(( resolve, reject ) => {
             if ( KeycloakService.auth.authz.token ) {
@@ -75,7 +95,10 @@ export class KeycloakService {
         } );
     }
 
-    static isLogged() {
+    /**
+     * Returns true if the current user is logged in
+     */
+    static isLogged(): boolean {
         return KeycloakService.auth.authz != null && KeycloakService.auth.authz.authenticated;
     }
 }

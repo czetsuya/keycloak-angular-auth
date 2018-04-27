@@ -9,10 +9,5 @@ export const environment = {
     apiUrl: 'http://localhost:8280/api/rest',
 
     keycloakRealm: 'keycloak-auth',
-    keycloakBaseUrl: 'http://localhost:8380/',
-
-    imageType:
-    {
-        'PROMOTER_PROFILE': '/adm/promoter/{id}/profileImage'
-    }
+    keycloakBaseUrl: 'http://localhost:8380/'
 };
