@@ -1,0 +1,31 @@
+{
+  "realm" : "keycloak-auth",
+  "users" : [ {
+    "id" : "d2bd7092-cfcf-481f-8ecb-a5e04b3341e6",
+    "createdTimestamp" : 1524827271585,
+    "username" : "edward",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "BP/hD+Dt17UTy1R8cO1echlrRn/pu+SP0mYBr0vspk3vfUYkurdaM1+U4Qb/XjR/ka71pr8KgRVBgZMblIOwWw==",
+      "salt" : "+7ytWL8uZ1jBHod+sx+aow==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1524827277635,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "uma_authorization", "offline_access" ],
+    "clientRoles" : {
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ "/User" ]
+  } ]
+}

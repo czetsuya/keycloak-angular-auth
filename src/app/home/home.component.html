@@ -1,0 +1,9 @@
+<p>This is a public page accessible to anyone.
+<ul>
+	<li><a [routerLink]="['/secured']">Secured page in the same
+			module.</a></li>
+	<li><a [routerLink]="['/groupRestricted']">Secured page in
+			another module.</a></li>
+	<li *ngIf="getKeycloakService().isLogged()"><a
+		(click)="getKeycloakService().logout()">Logout</a></li>
+</ul>

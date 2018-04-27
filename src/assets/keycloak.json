@@ -1,0 +1,8 @@
+{
+	"realm": "keycloak-auth",
+	"auth-server-url": "http://localhost:8380/auth",
+	"ssl-required": "none",
+	"resource": "auth-client",
+	"public-client": true,
+	"confidential-port": 0
+}
