@@ -32,7 +32,7 @@ export class KeycloakService {
     }
 
     /**
-     * Checks if the login user is a member of the specified group
+     * Checks if the logged user is a member of the specified group
      * 
      * @param groupName group name defined in keycloak
      */
@@ -41,7 +41,7 @@ export class KeycloakService {
     }
 
     /**
-     * Checks if the login user is a member of the specified groups
+     * Checks if the logged user is a member of the specified groups
      * 
      * @param groupNames a list of group names defined in keycloak
      */
@@ -54,6 +54,16 @@ export class KeycloakService {
                 return KeycloakService.hasGroup( e );
             }
         } );
+    }
+    
+    /**
+     * Checks if the logged user has the role specified
+     * 
+     * @param roleName The name of the role
+     * @param resource The keycloak client
+     */
+    static hasRole( roleName: string, resource?: string ): boolean {
+        return KeycloakService.auth.authz.hasRealmRole( roleName ) || KeycloakService.auth.authz.hasResourceRole( roleName ) || KeycloakService.auth.authz.hasResourceRole( roleName, resource );
     }
 
     /**
