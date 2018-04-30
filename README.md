@@ -1,15 +1,30 @@
+Angular 5 Keycloak Integration
+--
+This is a project template that integrates Keycloak authentication server to an Angular5 project.
+
+It provides an authentication guard service that can restrict a component from being accessible if a user is not logged in.
+
+Features
+--
+ - Restricts a component from being accessible, if a user is not logged in.
+ - Restricts access of lazily loaded modules by groups.
+ - Restricts access of lazily loaded modules by role.
+ 
+Requirements
+--
 This project was tested on:
  - node v10.0.0
  - npm v6.0.0
  - ng v1.7.4
 
-Prerequisites
+Instructions
+--
 
 Keycloak
 --
- - Installed keycloak server on your local environment. I'm using version 3.4.1.
+ - Install keycloak server on your local environment. I'm using version 3.4.1.
  - Login to keycloak and import the realm in config/keycloak-auth-realm.json.
- - Import the user from config/keycloak-auth-users-0.json. Account is edward / edward.
+ - Import the user from config/keycloak-auth-users-0.json. Account is edward / edward (with group User). kerri / kerri (with role AppRole).
  - You can create your own user, just make sure to add him / her to the User group.
  
 Angular

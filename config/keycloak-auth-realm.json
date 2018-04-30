@@ -49,6 +49,13 @@
       "composite" : false,
       "clientRole" : false,
       "containerId" : "keycloak-auth"
+    }, {
+      "id" : "418201b0-2606-4a12-9011-97055cd83cb7",
+      "name" : "AppRole",
+      "scopeParamRequired" : false,
+      "composite" : false,
+      "clientRole" : false,
+      "containerId" : "keycloak-auth"
     } ],
     "client" : {
       "auth-client" : [ ],

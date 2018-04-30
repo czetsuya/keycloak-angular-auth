@@ -27,5 +27,32 @@
     },
     "notBefore" : 0,
     "groups" : [ "/User" ]
+  }, {
+    "id" : "b3fed88c-e83c-479d-954f-d366e4bbff89",
+    "createdTimestamp" : 1525076884559,
+    "username" : "kerri",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "xAf0nhDuoNdzAiR5o+14ivdGJUpQzzYjnHWZF96te8c4QTNBXZAPyjb09V+0SFEkoiOJ2un7Y730Sjx+hWNJtA==",
+      "salt" : "aWh0ew+3I3ih8Tah1rdTQg==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1525076894957,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "uma_authorization", "offline_access", "AppRole" ],
+    "clientRoles" : {
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
   } ]
 }
