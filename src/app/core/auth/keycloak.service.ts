@@ -8,6 +8,7 @@ declare var Keycloak: any;
 export class KeycloakService {
 
     static auth: any = {};
+    static redirectUrl: string;
 
     /**
      * Initialized keycloak client
