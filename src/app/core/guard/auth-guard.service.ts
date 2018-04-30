@@ -22,6 +22,7 @@ export class AuthGuardService implements CanActivate, CanLoad {
     checkLogin( url: string ): boolean {
         if ( KeycloakService.auth.loggedIn && KeycloakService.auth.authz.authenticated ) {
             return true;
+            
         } else {
             KeycloakService.login();
             return false;
@@ -34,21 +35,15 @@ export class AuthGuardService implements CanActivate, CanLoad {
      * @param route The route
      */
     canLoad( route: Route ): boolean {
-        if ( KeycloakService.auth.loggedIn && KeycloakService.auth.authz.authenticated ) {
-
-        } else {
+        if ( !( KeycloakService.auth.loggedIn && KeycloakService.auth.authz.authenticated ) ) {
             KeycloakService.login();
             return false;
         }
 
         let data = route.data["Permission"] as PermissionGuard;
-
-        if ( Array.isArray( data.Only ) && Array.isArray( data.Except ) ) {
-            throw "Can't use both 'Only' and 'Except' in route data.";
-        }
-
-        if ( Array.isArray( data.Only ) ) {
-            let hasDefined = KeycloakService.hasGroups( data.Only )
+        console.log( data.Role );
+        if ( data.Role ) {
+            let hasDefined = KeycloakService.hasRole( data.Role )
             if ( hasDefined )
                 return true;
 
@@ -56,17 +51,35 @@ export class AuthGuardService implements CanActivate, CanLoad {
                 this.router.navigate( [data.RedirectTo] );
 
             return false;
-        }
 
-        if ( Array.isArray( data.Except ) ) {
-            let hasDefined = KeycloakService.hasGroups( data.Except )
-            if ( !hasDefined )
-                return true;
+        } else {
+            console.log('unrole');
 
-            if ( data.RedirectTo && data.RedirectTo !== undefined )
-                this.router.navigate( [data.RedirectTo] );
+            if ( Array.isArray( data.Only ) && Array.isArray( data.Except ) ) {
+                throw "Can't use both 'Only' and 'Except' in route data.";
+            }
 
-            return false;
+            if ( Array.isArray( data.Only ) ) {
+                let hasDefined = KeycloakService.hasGroups( data.Only )
+                if ( hasDefined )
+                    return true;
+
+                if ( data.RedirectTo && data.RedirectTo !== undefined )
+                    this.router.navigate( [data.RedirectTo] );
+
+                return false;
+            }
+
+            if ( Array.isArray( data.Except ) ) {
+                let hasDefined = KeycloakService.hasGroups( data.Except )
+                if ( !hasDefined )
+                    return true;
+
+                if ( data.RedirectTo && data.RedirectTo !== undefined )
+                    this.router.navigate( [data.RedirectTo] );
+
+                return false;
+            }
         }
     }
 

@@ -12,6 +12,29 @@ export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'secured', canActivate: [AuthGuard], component: SecuredComponent },
+    {
+        path: 'secured-role',
+        canLoad: [AuthGuard],
+        loadChildren: 'app/secured-role/secured-role.module#SecuredRoleModule',
+        data: {
+            Permission: {
+                Role: 'AppRole',
+                RedirectTo: '403'
+            } as PermissionGuard
+        }
+    },
+
+    {
+        path: 'secured-role',
+        canLoad: [AuthGuard],
+        loadChildren: 'app/group-restricted/group-restricted.module#GroupRestrictedModule',
+        data: {
+            Permission: {
+                Only: ['User'],
+                RedirectTo: '403'
+            } as PermissionGuard
+        }
+    },
 
     {
         path: 'groupRestricted',

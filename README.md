@@ -16,6 +16,48 @@ Angular
 --
  - Install keycloak: npm install keycloak-js@latest --save 
  
+How-to
+--
+The following are configurations on how to secure routes.
+
+1.) To secure a component by authenticated user:
+
+```
+{ path: 'secured', canActivate: [AuthGuard], component: SecuredComponent },
+```
+
+2.) To secure a module by group membership:
+
+```
+{
+    path: 'groupRestricted',
+    canLoad: [AuthGuard],
+    loadChildren: 'app/group-restricted/group-restricted.module#GroupRestrictedModule',
+    data: {
+        Permission: {
+            Only: ['User'],
+            RedirectTo: '403'
+        } as PermissionGuard
+    }
+}
+```
+
+3.) To secure a module by role membership:
+
+```
+{
+    path: 'secured-role',
+    canLoad: [AuthGuard],
+    loadChildren: 'app/group-restricted/group-restricted.module#GroupRestrictedModule',
+    data: {
+        Permission: {
+            Only: ['User'],
+            RedirectTo: '403'
+        } as PermissionGuard
+    }
+}
+```
+ 
 Notes
 --
   - Keycloak is injected and initialized at main.ts.
