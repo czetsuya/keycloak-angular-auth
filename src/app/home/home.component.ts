@@ -14,8 +14,8 @@ import { environment } from 'environments/environment';
 } )
 export class HomeComponent implements OnInit {
 
-    animes: string[]
-    errors: string
+    animes: any
+    errors: any
 
     constructor( private http: HttpClient ) { }
 
