@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Injectable, Inject } from '@angular/core';
+import { Response } from '@angular/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+
 import { KeycloakService } from "app/core/auth/keycloak.service";
+import { environment } from 'environments/environment';
 
 @Component( {
     selector: 'app-home',
@@ -9,13 +14,29 @@ import { KeycloakService } from "app/core/auth/keycloak.service";
 } )
 export class HomeComponent implements OnInit {
 
-    constructor() { }
+    animes: string[]
+    errors: string
+
+    constructor( private http: HttpClient ) { }
 
     ngOnInit() {
     }
-    
+
     getKeycloakService() {
-        return KeycloakService;
+        return KeycloakService
+    }
+
+    callApi() {
+        this.errors = null;
+        this.http.get( environment.apiUrl + "/animes" ).subscribe( data => {
+            this.animes = data
+        }, ( err: HttpErrorResponse ) => {
+            this.errors = err
+        } );
+    }
+
+    stringify( val ) {
+        return JSON.stringify( val );
     }
 
 }

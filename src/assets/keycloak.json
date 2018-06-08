@@ -1,8 +1,10 @@
 {
-	"realm": "keycloak-auth",
-	"auth-server-url": "http://localhost:8380/auth",
-	"ssl-required": "none",
-	"resource": "auth-client",
-	"public-client": true,
-	"confidential-port": 0
+  "realm": "keycloak-auth",
+  "auth-server-url": "http://localhost:8380/auth",
+  "ssl-required": "none",
+  "resource": "frontend",
+  "credentials": {
+    "secret": "36cdf012-1793-4094-9fb0-91c268ee7b47"
+  },
+  "confidential-port": 0
 }

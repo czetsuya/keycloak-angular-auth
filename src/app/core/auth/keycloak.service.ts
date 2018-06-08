@@ -22,6 +22,7 @@ export class KeycloakService {
                 .success(() => {
                     KeycloakService.auth.loggedIn = true;
                     KeycloakService.auth.authz = keycloakAuth;
+                    KeycloakService.auth.registerUrl = KeycloakService.auth.authz.createRegisterUrl();
                     KeycloakService.auth.logoutUrl = keycloakAuth.authServerUrl + "/realms/" + environment.keycloakRealm + "/protocol/openid-connect/logout?redirect_uri=" + environment.baseUrl + "/index.html";
 
                     resolve();
@@ -56,7 +57,7 @@ export class KeycloakService {
             }
         } );
     }
-    
+
     /**
      * Checks if the logged user has the role specified
      * 
@@ -72,21 +73,16 @@ export class KeycloakService {
      */
     static logout() {
         console.log( '*** LOGOUT' );
+        KeycloakService.auth.authz.logout( { redirectUri: KeycloakService.auth.logoutUrl } );
         KeycloakService.auth.loggedIn = false;
         KeycloakService.auth.authz = null;
-        console.log( KeycloakService.auth.logoutUrl );
-        window.location.href = KeycloakService.auth.logoutUrl;
     }
 
     /**
      * Redirects to keycloak login page
      */
     static login() {
-        KeycloakService.auth.authz.login().success( function() {
-            KeycloakService.auth.authz.initPromise.setSuccess();
-        } ).error( function() {
-            KeycloakService.auth.authz.initPromise.setError();
-        } );
+        KeycloakService.auth.authz.login();
     }
 
     /**
@@ -111,5 +107,12 @@ export class KeycloakService {
      */
     static isLogged(): boolean {
         return KeycloakService.auth.authz != null && KeycloakService.auth.authz.authenticated;
+    }
+    
+    /**
+     * Returns keycloak registration url
+     */
+    static createRegisterUrl() {
+        return KeycloakService.auth.registerUrl;
     }
 }

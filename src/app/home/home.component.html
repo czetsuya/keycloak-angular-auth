@@ -1,10 +1,23 @@
-<p>This is a public page accessible to anyone.
-<ul>
-	<li><a [routerLink]="['/secured']">Secured page in the same
-			module.</a></li>
-	<li><a [routerLink]="['/groupRestricted']">Secured page in
-			another module.</a></li>
-	<li><a [routerLink]="['/secured-role']">Secured page by role.</a></li>
-	<li *ngIf="getKeycloakService().isLogged()"><a
-		(click)="getKeycloakService().logout()">Logout</a></li>
-</ul>
+<div class="center">
+	<div *ngIf="errors">{{stringify(errors)}}</div>
+	<p>This is a public page accessible to anyone.</p>
+	<p>User edward should be able to call the api while kerri should throw forbidden error since she doesn't have APIAccess role.</p>
+	<ul>
+		<li>
+			<a [routerLink]="['/secured']">Secured page in the same module.</a></li>
+		<li>
+			<a [routerLink]="['/groupRestricted']">Secured page in another module.</a></li>
+		<li>
+			<a [routerLink]="['/secured-role']">Secured page by role.</a></li>
+		<li>
+			<a style="cursor: pointer;" (click)="callApi()">Call API (Login required)</a></li>
+		<li *ngIf="getKeycloakService().isLogged()">
+			<a (click)="getKeycloakService().logout()">Logout</a></li>
+	</ul>
+	<div *ngIf="animes">
+		<h2>Isekai Anime</h2>
+		<ul>
+			<li *ngFor="let anime of animes">{{anime}}</li>
+		</ul>
+	</div>
+</div>
