@@ -9,53 +9,40 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'secured', canActivate: [AuthGuard], component: SecuredComponent },
-    {
-        path: 'secured-role',
-        canLoad: [AuthGuard],
-        loadChildren: 'app/secured-role/secured-role.module#SecuredRoleModule',
-        data: {
-            Permission: {
-                Role: 'AppRole',
-                RedirectTo: '403'
-            } as PermissionGuard
-        }
-    },
+	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ path: 'home', component: HomeComponent },
+	{ path: 'secured', canActivate: [AuthGuard], component: SecuredComponent },
+	{
+		path: 'secured-role',
+		canLoad: [AuthGuard],
+		loadChildren: 'app/secured-role/secured-role.module#SecuredRoleModule',
+		data: {
+			Permission: {
+				Role: 'AppRole',
+				RedirectTo: '403'
+			} as PermissionGuard
+		}
+	},
+	{
+		path: 'groupRestricted',
+		canLoad: [AuthGuard],
+		loadChildren: 'app/group-restricted/group-restricted.module#GroupRestrictedModule',
+		data: {
+			Permission: {
+				Only: ['User'],
+				RedirectTo: '403'
+			} as PermissionGuard
+		}
+	},
 
-    {
-        path: 'secured-role',
-        canLoad: [AuthGuard],
-        loadChildren: 'app/group-restricted/group-restricted.module#GroupRestrictedModule',
-        data: {
-            Permission: {
-                Only: ['User'],
-                RedirectTo: '403'
-            } as PermissionGuard
-        }
-    },
+	{ path: '403', component: ForbiddenComponent },
+	{ path: '404', component: NotFoundComponent },
 
-    {
-        path: 'groupRestricted',
-        canLoad: [AuthGuard],
-        loadChildren: 'app/group-restricted/group-restricted.module#GroupRestrictedModule',
-        data: {
-            Permission: {
-                Only: ['User'],
-                RedirectTo: '403'
-            } as PermissionGuard
-        }
-    },
-
-    { path: '403', component: ForbiddenComponent },
-    { path: '404', component: NotFoundComponent },
-
-    { path: '**', redirectTo: '404' }
+	{ path: '**', redirectTo: '404' }
 ];
 
-@NgModule( {
-    imports: [RouterModule.forRoot( routes )],
-    exports: [RouterModule]
-} )
+@NgModule({
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
+})
 export class AppRoutingModule { }

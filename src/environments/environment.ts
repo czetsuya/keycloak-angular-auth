@@ -10,5 +10,5 @@ export const environment = {
 
     keycloakRealm: 'keycloak-auth',
     keycloakClient: 'auth-client',
-    keycloakBaseUrl: 'http://localhost:8380/'
+    keycloakBaseUrl: 'http://localhost:8080/'
 };
