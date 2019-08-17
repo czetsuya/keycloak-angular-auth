@@ -6,7 +6,7 @@
 export const environment = {
     baseUrl: 'http://localhost:4200',
     production: false,
-    apiUrl: 'http://localhost:8280/keycloak-auth-api/rest',
+    apiUrl: 'http://localhost:8080/keycloak-auth-api/rest',
 
     keycloakRealm: 'keycloak-auth',
     keycloakClient: 'auth-client',
