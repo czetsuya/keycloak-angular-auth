@@ -4,6 +4,8 @@ This is a project template that integrates Keycloak authentication server to an 
 
 It provides an authentication guard service that can restrict a component from being accessible if a user is not logged in.
 
+Blog: https://czetsuya-tech.blogspot.com/2019/08/how-to-secure-angular-app-with-keycloak.html
+
 Features
 --
  - Restricts a component from being accessible, if a user is not logged in.
