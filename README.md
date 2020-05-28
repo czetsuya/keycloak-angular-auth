@@ -9,22 +9,38 @@ It provides an authentication guard service that can restrict a component from b
 
 Blog: https://czetsuya-tech.blogspot.com/2019/08/how-to-secure-angular-app-with-keycloak.html
 
-# Features
+## Features
 
  - Restricts a component from being accessible, if a user is not logged in.
  - Restricts access of lazily loaded modules by groups.
  - Restricts access of lazily loaded modules by role.
  
-# Requirements
+## Requirements
 
 This project was tested on:
  - node v10.0.0
  - npm v6.0.0
  - ng v1.7.4
 
-# Instructions
+To update the angular CLI version:
 
-## Keycloak
+```sh
+npm uninstall --save-dev angular-cli
+npm cache verify
+npm install --save-dev @angular/cli@latest
+```
+
+To update the dependencies
+
+```sh
+npm i -g npm-check-updates
+ncu -u
+npm install
+```
+
+## Instructions
+
+### Keycloak
 
  - Install keycloak server on your local environment. I'm using version 3.4.1.
  - Login to keycloak and import the realm in config/keycloak-auth-realm.json.
@@ -32,11 +48,11 @@ This project was tested on:
  - You can create your own user, just make sure to add him / her to the User group.
  - Don't forget to map Group Membership to "groups".
  
-## Angular
+### Angular
 
  - Install keycloak: npm install keycloak-js@latest --save 
  
-## How-to
+### How-to
 
 The following are configurations on how to secure routes.
 
@@ -78,7 +94,7 @@ The following are configurations on how to secure routes.
 }
 ```
 
-# References
+## References
 
  - https://github.com/czetsuya/Keycloak-Auth
  - https://github.com/czetsuya/Keycloak-Auth-API
@@ -86,7 +102,7 @@ The following are configurations on how to secure routes.
  - https://cli.angular.io/
  - https://hub.docker.com/r/jboss/keycloak
 
-# Notes
+## Notes
 
   - Keycloak is injected and initialized at main.ts.
   - keycloakRealm and keycloakBaseUrl must be set in src/environments/environment.ts.
