@@ -1,6 +1,6 @@
 {
-  "id" : "keycloak-auth",
-  "realm" : "keycloak-auth",
+  "id" : "keycloak-angular-auth",
+  "realm" : "keycloak-angular-auth",
   "notBefore" : 0,
   "revokeRefreshToken" : false,
   "refreshTokenMaxReuse" : 0,
@@ -1714,5 +1714,60 @@
     "_browser_header.contentSecurityPolicy" : "frame-src 'self'; frame-ancestors 'self'; object-src 'none';",
     "waitIncrementSeconds" : "60"
   },
-  "keycloakVersion" : "3.4.1.Final"
+  "keycloakVersion" : "3.4.1.Final",
+  "users" : [ {
+    "id" : "d2bd7092-cfcf-481f-8ecb-a5e04b3341e6",
+    "createdTimestamp" : 1524827271585,
+    "username" : "edward",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "BP/hD+Dt17UTy1R8cO1echlrRn/pu+SP0mYBr0vspk3vfUYkurdaM1+U4Qb/XjR/ka71pr8KgRVBgZMblIOwWw==",
+      "salt" : "+7ytWL8uZ1jBHod+sx+aow==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1524827277635,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "uma_authorization", "offline_access" ],
+    "clientRoles" : {
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ "/User" ]
+  }, {
+    "id" : "b3fed88c-e83c-479d-954f-d366e4bbff89",
+    "createdTimestamp" : 1525076884559,
+    "username" : "kerri",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "xAf0nhDuoNdzAiR5o+14ivdGJUpQzzYjnHWZF96te8c4QTNBXZAPyjb09V+0SFEkoiOJ2un7Y730Sjx+hWNJtA==",
+      "salt" : "aWh0ew+3I3ih8Tah1rdTQg==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1525076894957,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "uma_authorization", "offline_access", "AppRole" ],
+    "clientRoles" : {
+      "account" : [ "view-profile", "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
 }

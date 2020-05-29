@@ -15,7 +15,7 @@ export const routes: Routes = [
 	{
 		path: 'secured-role',
 		canLoad: [AuthGuard],
-		loadChildren: 'app/secured-role/secured-role.module#SecuredRoleModule',
+		loadChildren: () => import('app/secured-role/secured-role.module').then(m => m.SecuredRoleModule),
 		data: {
 			Permission: {
 				Role: 'AppRole',
@@ -26,7 +26,7 @@ export const routes: Routes = [
 	{
 		path: 'groupRestricted',
 		canLoad: [AuthGuard],
-		loadChildren: 'app/group-restricted/group-restricted.module#GroupRestrictedModule',
+		loadChildren: () => import('app/group-restricted/group-restricted.module').then(m => m.GroupRestrictedModule),
 		data: {
 			Permission: {
 				Only: ['User'],

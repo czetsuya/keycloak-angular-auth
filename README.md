@@ -18,9 +18,9 @@ Blog: https://czetsuya-tech.blogspot.com/2019/08/how-to-secure-angular-app-with-
 ## Requirements
 
 This project was tested on:
- - node v10.0.0
- - npm v6.0.0
- - ng v1.7.4
+ - node v12.17.0
+ - npm v6.15.5
+ - angular/cli v9.1.7
 
 To update the angular CLI version:
 
@@ -42,9 +42,10 @@ npm install
 
 ### Keycloak
 
- - Install keycloak server on your local environment. I'm using version 3.4.1.
+ - Install keycloak server on your local environment. I'm using version 10.0.1.
+ - Or use a docker image. To run : docker run --name=keycloak10 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=kerri -p 8080:8080 jboss/keycloak:10.0.1
  - Login to keycloak and import the realm in config/keycloak-auth-realm.json.
- - Import the user from config/keycloak-auth-users-0.json. Account is edward / edward (with group User, has APIAccess role). kerri / kerri (with role AppRole).
+ - The import will also create users. Account is edward / edward (with group User, has APIAccess role). kerri / kerri (with role AppRole).
  - You can create your own user, just make sure to add him / her to the User group.
  - Don't forget to map Group Membership to "groups".
  

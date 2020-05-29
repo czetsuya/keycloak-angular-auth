@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Injectable, Inject } from '@angular/core';
-import { Response } from '@angular/http';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
 import { KeycloakService } from "app/core/auth/keycloak.service";
@@ -20,6 +19,7 @@ export class HomeComponent implements OnInit {
     constructor( private http: HttpClient ) { }
 
     ngOnInit() {
+        console.log("hello")
     }
 
     getKeycloakService() {
