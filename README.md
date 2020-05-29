@@ -97,8 +97,8 @@ The following are configurations on how to secure routes.
 
 ## References
 
- - https://github.com/czetsuya/Keycloak-Auth
- - https://github.com/czetsuya/Keycloak-Auth-API
+ - https://github.com/czetsuya/keycloak-angular-auth
+ - https://github.com/czetsuya/keycloak-auth-api
  - https://www.keycloak.org/
  - https://cli.angular.io/
  - https://hub.docker.com/r/jboss/keycloak
