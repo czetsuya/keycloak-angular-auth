@@ -1,7 +1,7 @@
 [![patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=12280211)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-# Angular 5 Keycloak Integration
+# Angular 7 Keycloak Integration
 
 This is a project template that integrates Keycloak authentication server to an Angular5 project.
 
@@ -21,6 +21,8 @@ This project was tested on:
  - node v12.17.0
  - npm v6.15.5
  - angular/cli v9.1.7
+ - Keycloak 10.0.1
+ - Wildfly 19.0.1
 
 To update the angular CLI version:
 
