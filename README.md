@@ -45,7 +45,7 @@ npm install
 ### Keycloak
 
  - Install keycloak server on your local environment. I'm using version 10.0.1.
- - Or use a docker image. To run : docker run --name=keycloak10 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=kerri -p 8080:8080 jboss/keycloak:10.0.1
+ - Or use a docker image. To run : docker run --name=keycloak10 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=kerri -p 8080:8080 jboss/keycloak:10.0.1. It userId is null after you login, use the installer setup instead.
  - Login to keycloak and import the realm in config/keycloak-auth-realm.json.
  - The import will also create users. Account is edward / edward (with group User, has APIAccess role). kerri / kerri (with role AppRole).
  - You can create your own user, just make sure to add him / her to the User group.
