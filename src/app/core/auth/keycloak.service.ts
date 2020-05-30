@@ -19,7 +19,7 @@ export class KeycloakService {
 
         return new Promise(( resolve, reject ) => {
             keycloakAuth.init( { onLoad: 'check-sso' } )
-                .success(() => {
+                .then(() => {
                     KeycloakService.auth.loggedIn = true;
                     KeycloakService.auth.authz = keycloakAuth;
                     KeycloakService.auth.registerUrl = KeycloakService.auth.authz.createRegisterUrl();
@@ -27,7 +27,7 @@ export class KeycloakService {
 
                     resolve();
                 } )
-                .error(() => {
+                .catch(() => {
                     reject();
                 } );
         } );

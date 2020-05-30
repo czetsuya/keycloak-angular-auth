@@ -12,7 +12,11 @@ if (environment.production) {
 
 KeycloakService.init()
 .then(() => {
+    console.log("kc init ok");
     const platform = platformBrowserDynamic();
     platform.bootstrapModule( AppModule );
 } )
-.catch( function( error ) { console.log( JSON.stringify( error ) ); return; } );
+.catch( function( error ) {
+  console.log( "kc init ko " + JSON.stringify( error ) );
+  return;
+} );
