@@ -116,3 +116,7 @@ The following are configurations on how to secure routes.
   - src/assets/keycloak.json, is where we defined the keycloak client configuration.
   
 *Make sure that keycloak is running before running this app on ng serve. This project is calling keycloak from port 8380, you may want to change that to 8080 if you deploy keycloak as default (src/environments/environment.ts).
+
+## Authors
+
+ * **Edward P. Legaspi** - *Java Architect* - [czetsuya](https://github.com/czetsuya)
