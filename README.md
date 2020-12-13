@@ -22,7 +22,7 @@ This project was tested on:
  - node v12.17.0
  - npm v6.15.5
  - angular/cli v9.1.7
- - Keycloak 10.0.1
+ - Keycloak 11.0.3
  - Wildfly 19.0.1
 
 To update the angular CLI version:
@@ -44,6 +44,14 @@ npm install
 ## Instructions
 
 ### Keycloak
+
+#### Docker
+
+To run Keycloak using docker, open your command prompt and execute:
+
+```sh
+docker run --name=keycloak_11 -p 8081:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=ipiel jboss/keycloak:11.0.3
+```
 
  - Install keycloak server on your local environment. I'm using version 10.0.1.
  - Or use a docker image. To run : docker run --name=keycloak10 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=kerri -p 8080:8080 jboss/keycloak:10.0.1.
