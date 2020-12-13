@@ -50,7 +50,7 @@ npm install
 To run Keycloak using docker, open your command prompt and execute:
 
 ```sh
-docker run --name=keycloak_11 -p 8081:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=ipiel jboss/keycloak:11.0.3
+docker run --name=keycloak_11 -p 8081:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak:11.0.3
 ```
 
  - Install keycloak server on your local environment. I'm using version 10.0.1.
